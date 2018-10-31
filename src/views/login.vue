@@ -16,7 +16,8 @@
       <!-- 按钮 -->
       <el-button
         type="primary"
-        class="login-button">登录</el-button>
+        class="login-button"
+        @click.prevent="handleLoginin()">登录</el-button>
     </el-form>
   </div>
 </template>
@@ -29,6 +30,21 @@ export default {
         password: ''
       }
     }// return
+  },
+  methods: {
+    // 点击登录 判断登录信息
+    async handleLoginin () {
+      const res = await this.$http.post('login', this.formdata)
+      // console.log(res)
+      const { meta, data } = res.data
+      // 请求失败
+      if (meta.status !== 200) return this.$message.error(meta.msg)
+      // 请求成功
+      // 设置sessionStorage值为token
+      window.sessionStorage.setItem('token', data.token)
+      this.$message.success(meta.msg)
+      this.$router.push('/home')
+    }
   }
 }
 </script>
