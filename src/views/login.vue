@@ -35,7 +35,6 @@ export default {
     // 点击登录 判断登录信息
     async handleLoginin () {
       const res = await this.$http.post('login', this.formdata)
-      // console.log(res)
       const { meta, data } = res.data
       // 请求失败
       if (meta.status !== 200) return this.$message.error(meta.msg)
@@ -43,7 +42,7 @@ export default {
       // 设置sessionStorage值为token
       window.sessionStorage.setItem('token', data.token)
       this.$message.success(meta.msg)
-      this.$router.push('/home')
+      this.$router.push('/')
     }
   }
 }

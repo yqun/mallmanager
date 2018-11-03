@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import moment from 'moment'
 import HttpTool from './pulign/axios'
 import App from './App'
 import router from './router'
@@ -12,6 +13,11 @@ import './assets/css/index.css'
 
 Vue.use(ElementUI)
 Vue.use(HttpTool)
+
+Vue.filter('fmtData', (v) => {
+  return moment(v).format('YYY-MM-DD')
+})
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

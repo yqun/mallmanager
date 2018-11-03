@@ -95,7 +95,9 @@
         </el-menu>
       </el-aside>
       <!--主体-->
-      <el-main class="main">Main</el-main>
+      <el-main class="main">
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -107,7 +109,7 @@ export default {
     // 未登录 跳转登录页面
     if (!token) return this.$router.push('/login')
     // 已登录 渲染home页面
-    this.$router.push('/home')
+    this.$router.push('/')
   },
   methods: {
     // 退出登录

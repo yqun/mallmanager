@@ -4,6 +4,7 @@ import Router from 'vue-router'
 // 导入组价
 import Login from '@/views/login'
 import Home from '@/views/home'
+import User from '@/views/user'
 
 Vue.use(Router)
 
@@ -14,8 +15,14 @@ export default new Router({
       component: Login
     },
     {
-      path: '/home',
-      component: Home
+      path: '/',
+      component: Home,
+      children: [
+        {
+          path: '/users',
+          component: User
+        }
+      ]
     }
   ]
 })
