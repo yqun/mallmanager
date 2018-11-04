@@ -7,6 +7,7 @@ import moment from 'moment'
 import HttpTool from './pulign/axios'
 import App from './App'
 import router from './router'
+import myBread from '@/components/myBread'
 
 // 导入css
 import './assets/css/index.css'
@@ -19,7 +20,8 @@ Vue.filter('fmtData', (v) => {
 })
 
 Vue.config.productionTip = false
-
+// 全局的面包屑导航
+Vue.component(myBread.name, myBread)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

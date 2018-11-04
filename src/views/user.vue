@@ -82,7 +82,7 @@
       </div>
     </el-dialog>
     <!-- 点击编辑弹框 -->
-    <el-dialog title="编辑用户" :visible.sync="dialogFormVisibleEditUser">
+    <el-dialog title="编辑用户" :visible.sync="dialogFormVisibleEditUser" @close="trimFormData()">
       <el-form :model="formData">
         <el-form-item label="用户名" :label-width="formLabelWidth">
           {{ formData.username }}
@@ -165,6 +165,14 @@ export default {
     this.loadTableData()
   },
   methods: {
+    // 关闭弹框清空formData数据
+    trimFormData () {
+      for (const key in this.formData) {
+        if (this.formData.hasOwnProperty(key)) {
+          this.formData[key] = ''
+        }// if end
+      }// for end
+    },
     // 发送请求  获取页面渲染数据
     async loadTableData () {
       // 除了登录功能，其他功能接口都需要token
@@ -242,7 +250,7 @@ export default {
     async showEditUserDia (user) {
       this.dialogFormVisibleEditUser = true
       const res = await this.$http.get(`users/${user.id}`)
-      console.log(res)
+      // console.log(res)
       this.formData = res.data.data
     },
     // 编辑信息
