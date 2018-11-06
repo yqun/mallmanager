@@ -16,7 +16,7 @@ Vue.use(ElementUI)
 Vue.use(HttpTool)
 
 Vue.filter('fmtData', (v) => {
-  return moment(v).format('YYY-MM-DD')
+  return moment(v).format('YYYY-MM-DD')
 })
 
 Vue.config.productionTip = false

@@ -52,14 +52,6 @@ export default {
       menus: []
     }
   },
-  beforeCreate () {
-    // 判断是否登录成功
-    const token = window.sessionStorage.getItem('token')
-    // 未登录 跳转登录页面
-    if (!token) return this.$router.push('/login')
-    // 已登录 渲染home页面
-    this.$router.push('/')
-  },
   created () {
     this.getMenus()
   },
