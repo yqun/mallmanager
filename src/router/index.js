@@ -11,6 +11,9 @@ import Role from '@/views/role'
 import Goodslist from '@/views/goodslist'
 import Goodscate from '@/views/goodscate'
 import Cateparams from '@/views/cateparams'
+import GoodsAdd from '@/views/goodsadd'
+import Orders from '@/views/orders'
+import Reports from '@/views/reports'
 
 Vue.use(Router)
 const router = new Router({
@@ -23,6 +26,10 @@ const router = new Router({
       path: '/',
       component: Home,
       children: [
+        {
+          path: '/',
+          component: User
+        },
         {
           path: '/users',
           component: User
@@ -46,6 +53,18 @@ const router = new Router({
         {
           path: '/params',
           component: Cateparams
+        },
+        {
+          path: '/goodsadd',
+          component: GoodsAdd
+        },
+        {
+          path: '/orders',
+          component: Orders
+        },
+        {
+          path: '/reports',
+          component: Reports
         }
       ]
     }
@@ -59,7 +78,7 @@ router.beforeEach((to, from, next) => {
   } else {
     const token = sessionStorage.getItem('token')
     if (!token) {
-      this.$router.push('/login')
+      router.push('/login')
       Message.warning('请先登录')
     } else {
       next()

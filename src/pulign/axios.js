@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Message } from 'element-ui'
 
 const HttpTool = {}
 HttpTool.install = (Vue) => {
@@ -20,6 +21,11 @@ HttpTool.install = (Vue) => {
   // Add a response interceptor
   axios.interceptors.response.use(function (response) {
     // Do something with response data
+    console.log(response)
+    const {meta: { status, msg }} = response.data
+    if (status !== 200 || status !== 201) {
+      Message.info(msg)
+    }
     return response
   }, function (error) {
     // Do something with response error

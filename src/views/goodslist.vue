@@ -10,7 +10,7 @@
             v-model="searchVal">
             <el-button slot="append" icon="el-icon-search" @click.prevent="checkUser()"></el-button>
           </el-input>
-          <el-button type="success" @click.prevent="showAddUserDia()">添加商品</el-button>
+          <el-button type="success" @click.prevent="showAddGoods()">添加商品</el-button>
         </el-col>
       </el-row>
       <!-- 表格 -->
@@ -72,7 +72,7 @@ export default {
         this.list = data.goods
         this.total = data.total
       }
-      console.log(res)
+      // console.log(res)
     },
     // 分页
     handleSizeChange (val) {
@@ -84,6 +84,10 @@ export default {
       // console.log(`当前页: ${val}`)
       this.pagenum = val
       this.loadTableData()
+    },
+    // 显示添加商品组件
+    showAddGoods () {
+      this.$router.push('/goodsadd')
     }
   }
 

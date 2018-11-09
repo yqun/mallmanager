@@ -146,6 +146,7 @@ export default {
       const res = await this.$http.put(`categories/${this.formData.cat_id}`, {
         cat_name: this.formData.cat_name
       })
+      console.log(res)
       const { meta } = res.data
       if (meta.status === 200) {
         this.dialogFormVisibleAddEdit = false
